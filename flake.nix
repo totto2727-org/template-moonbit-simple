@@ -28,7 +28,11 @@
         in
         {
           default = pkgs.mkShell {
-            packages = [ pkgs.moonbit-bin.moonbit.latest ];
+            packages = [
+              pkgs.moonbit-bin.moonbit.latest
+              # Uncomment when preferred_target = "js" in moon.mod.
+              # pkgs.nodejs
+            ];
           };
         });
     };
