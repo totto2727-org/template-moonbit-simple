@@ -23,4 +23,7 @@ jobs:
           name: "username/project"
           rolling: true
           visibility: "public"
-          # include-output-paths: true
+          # Limit pre-publish evaluation to the runner system because cross-system cache inputs are unavailable.
+          my-flake-is-too-big: true
+          # Do not register individual output paths for this flake.
+          include-output-paths: false
