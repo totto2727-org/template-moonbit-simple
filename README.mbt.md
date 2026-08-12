@@ -1,40 +1,28 @@
-# username/project
+# MoonBit Simple Library Template
 
-A simple MoonBit library project.
+A GitHub repository template for starting a simple MoonBit library with a Nix development shell, automated checks, and optional publishing workflows.
 
-## Start a project
+## Use This Template
 
-1. Create a repository with GitHub's **Use this template** button.
-2. Replace `username/project` and the repository URL in `moon.mod`.
-3. Update the module description, keywords, and `README.mbt.md`. `README.md` is a relative symbolic link to `README.mbt.md`, so edit only `README.mbt.md`.
-4. To publish the module to Mooncakes, add `MOONCAKES_TOKEN` as a repository secret and rename `.github/workflows/publish.yml.disabled` to `publish.yml`. Delete the disabled file if Mooncakes publishing is not needed.
-5. To publish the Nix flake to FlakeHub, rename `.github/workflows/flakehub-publish-rolling.yml.disabled` to `flakehub-publish-rolling.yml`. Delete the disabled file if FlakeHub publishing is not needed.
+Create a repository with GitHub's **Use this template** button, then follow the conversion workflow in [AGENTS.md](./AGENTS.md). The workflow replaces the template's explanatory documentation with project-specific files based on `README_TEMPLATE.mbt.md` and `AGENTS_TEMPLATE.md`.
 
-## Target policy
+## Included Tooling
 
-Leave `supported_targets` and `preferred_target` unset for synchronous, backend-neutral libraries.
+- A Nix development shell with the MoonBit toolchain.
+- GitHub Actions checks for the supported MoonBit targets.
+- Optional Mooncakes and FlakeHub publishing workflows, disabled by default.
+- A sample library and test that can be replaced with project code.
 
-For libraries with async APIs, uncomment `supported_targets = "+native+js+wasm"` in `moon.mod` and select exactly one commented `preferred_target` in this order: `wasm`, `js`, then `native`. If a dependency supports fewer targets, narrow both settings to the dependency's supported targets.
+## Documentation Layout
 
-When selecting `js`, also uncomment `pkgs.nodejs` in `flake.nix`.
-
-## Usage
-
-```mbt check
-///|
-test {
-  inspect(@project.add(2, 3), content="5")
-}
-```
+- `README.mbt.md` and `AGENTS.md` explain this template and the conversion workflow.
+- `README_TEMPLATE.mbt.md` and `AGENTS_TEMPLATE.md` are customized and renamed for the copied project.
+- `README.md` is a relative symbolic link to `README.mbt.md` so MoonBit and GitHub use the same user-facing document.
 
 ## Development
 
-Enter the Nix development shell and run the standard MoonBit checks:
+For template conversion steps, development commands, target policy, and publishing configuration, see [AGENTS.md](./AGENTS.md).
 
-```bash
-nix develop
-moon info
-moon check
-moon test
-moon package --list
-```
+## License
+
+[MIT](./LICENSE)
