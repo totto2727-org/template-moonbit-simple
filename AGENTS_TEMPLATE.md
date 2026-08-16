@@ -13,9 +13,11 @@ Always consult the relevant MoonBit skills from [`totto2727-coding`](https://git
 
 ## Repository Structure
 
-- `moon.mod` defines the module metadata, repository, targets, and source root.
-- `src/` contains the library implementation, package declaration, and tests.
-- `flake.nix` and `flake.lock` define the reproducible development environment.
+- `moon.mod` defines the module metadata, repository, native target, and source root.
+- `src/main.mbt` contains the command-line application entry point.
+- `src/moon.pkg` declares the executable package and supported target.
+- `package.nix` defines the installable Nix package.
+- `flake.nix` and `flake.lock` expose the package and overlay while pinning the MoonBit toolchain and other Nix-provided tools.
 - `.github/workflows/` contains validation and optional publishing workflows.
 
 ## Development Commands
@@ -34,7 +36,10 @@ nix develop
 moon info
 moon check
 moon test
+moon run src
 moon package --list
+nix build .#project
+nix run .
 ```
 
 ## Package Updates
@@ -43,7 +48,7 @@ When upgrading a package, always run `nix flake update`.
 
 ## Target Policy
 
-Keep `supported_targets` and `preferred_target` in `moon.mod` aligned with the library's APIs and dependency support. When `preferred_target = "js"`, include `pkgs.nodejs` in the Nix development shell.
+Keep `supported_targets` and `preferred_target` in `moon.mod`, `supported_targets` in `src/moon.pkg`, and the build target in `package.nix` aligned with the application's APIs and dependency support.
 
 ## Architecture and Conventions
 
@@ -51,5 +56,5 @@ Replace this section with the copied project's source layout, public boundaries,
 
 ## Development Tools
 
-- **MoonBit** - builds, checks, tests, and packages the library.
-- **Nix flakes** - provide the pinned development toolchain and dependencies.
+- **MoonBit** - builds, checks, tests, and runs the command-line application.
+- **Nix flakes** - build and expose the package and overlay while pinning the MoonBit toolchain and other Nix-provided tools.

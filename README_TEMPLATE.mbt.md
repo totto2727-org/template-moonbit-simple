@@ -1,16 +1,17 @@
 # username/project
 
-Replace this paragraph with a concise description of what the library does, who it is for, and why someone would use it.
+Replace this paragraph with a concise description of what the command-line application does, who it is for, and why someone would use it.
 
 ## Usage
 
-Replace the sample below with the copied project's primary public API.
+Replace the sample below with the copied project's primary command.
 
-```mbt check
-///|
-test {
-  inspect(@project.add(2, 3), content="5")
-}
+```console
+$ moon run src
+Hello, world!
+
+$ nix run .
+Hello, world!
 ```
 
 ## Key Features
