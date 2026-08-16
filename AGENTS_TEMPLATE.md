@@ -13,9 +13,9 @@ Always consult the relevant MoonBit skills from [`totto2727-coding`](https://git
 
 ## Repository Structure
 
-- `moon.mod` defines the module metadata, repository, native target, and source root.
+- `moon.mod` defines the module metadata, repository, and source root.
 - `src/main.mbt` contains the command-line application entry point.
-- `src/moon.pkg` declares the executable package and supported target.
+- `src/moon.pkg` declares the executable package.
 - `package.nix` defines the installable Nix package.
 - `flake.nix` and `flake.lock` expose the package and overlay while pinning the MoonBit toolchain and other Nix-provided tools.
 - `.github/workflows/` contains validation and optional publishing workflows.
@@ -45,10 +45,6 @@ nix run .
 ## Package Updates
 
 When upgrading a package, always run `nix flake update`.
-
-## Target Policy
-
-Keep `supported_targets` and `preferred_target` in `moon.mod`, `supported_targets` in `src/moon.pkg`, and the build target in `package.nix` aligned with the application's APIs and dependency support.
 
 ## Architecture and Conventions
 

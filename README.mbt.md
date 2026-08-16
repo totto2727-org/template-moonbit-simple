@@ -22,7 +22,7 @@ Create a repository with GitHub's **Use this template** button, then follow the 
 
 ## Development
 
-For template conversion steps, development commands, target policy, and publishing configuration, see [AGENTS.md](./AGENTS.md).
+For template conversion steps, development commands, and publishing configuration, see [AGENTS.md](./AGENTS.md).
 
 ## License
 

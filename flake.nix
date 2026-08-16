@@ -7,42 +7,56 @@
       url = "github:totto2727/moonbit-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    moon-registry = {
+      url = "git+https://mooncakes.io/git/index";
+      flake = false;
+    };
   };
 
-  outputs = { nixpkgs, moonbit-overlay, ... }:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      moonbit-overlay,
+      moon-registry,
+      ...
+    }:
     let
       supportedSystems = [
         "aarch64-darwin"
         "x86_64-linux"
       ];
       forEachSystem = nixpkgs.lib.genAttrs supportedSystems;
-      projectOverlay = final: _previous: {
-        project = final.callPackage ./package.nix {
-          moonbitToolchain = final.moonbit-bin.moonbit.latest;
+      mkPkgs =
+        system:
+        import nixpkgs {
+          inherit system;
+          overlays = [ moonbit-overlay.overlays.default ];
         };
-      };
-      overlay = nixpkgs.lib.composeManyExtensions [
-        moonbit-overlay.overlays.default
-        projectOverlay
-      ];
-      mkPkgs = system: import nixpkgs {
-        inherit system;
-        overlays = [ overlay ];
-      };
+      mkProject =
+        pkgs:
+        pkgs.callPackage ./package.nix {
+          moonRegistryIndex = moon-registry;
+        };
     in
     {
-      overlays.default = overlay;
+      overlays.default = _final: previous: {
+        project = self.packages.${previous.stdenv.hostPlatform.system}.project;
+      };
 
-      packages = forEachSystem (system:
+      packages = forEachSystem (
+        system:
         let
-          pkgs = mkPkgs system;
+          project = mkProject (mkPkgs system);
         in
-        rec {
-          inherit (pkgs) project;
+        {
+          inherit project;
           default = project;
-        });
+        }
+      );
 
-      devShells = forEachSystem (system:
+      devShells = forEachSystem (
+        system:
         let
           pkgs = mkPkgs system;
         in
@@ -52,6 +66,7 @@
               pkgs.moonbit-bin.moonbit.latest
             ];
           };
-        });
+        }
+      );
     };
 }
