@@ -1,28 +1,62 @@
-# MoonBit Simple Library Template
+# MoonBit Simple CLI Template
 
-A GitHub repository template for starting a simple MoonBit library with a Nix development shell, automated checks, and optional publishing workflows.
+A GitHub repository template for starting a small MoonBit command-line application with a reproducible development shell, an optional Nix package and overlay, continuous integration, and optional publishing workflows.
 
-## Use This Template
+This document is canonical `README.mbt.md`; maintain `README.md` as the relative symlink `README.md -> README.mbt.md`.
 
-Create a repository with GitHub's **Use this template** button, then follow the conversion workflow in [AGENTS.md](./AGENTS.md). The workflow replaces the template's explanatory documentation with project-specific files based on `README_TEMPLATE.mbt.md` and `AGENTS_TEMPLATE.md`.
+## Usage
 
-## Included Tooling
+Run the sample directly from the MoonBit source package:
 
-- A Nix development shell with the MoonBit toolchain.
-- GitHub Actions checks for the supported MoonBit targets.
-- Optional Mooncakes and FlakeHub publishing workflows, disabled by default.
-- A sample library and test that can be replaced with project code.
+```console
+$ moon run src
+Hello, world!
+```
 
-## Documentation Layout
+When the optional Nix package is retained, it exposes the same command:
 
-- `README.mbt.md` and `AGENTS.md` explain this template and the conversion workflow.
-- `README_TEMPLATE.mbt.md` and `AGENTS_TEMPLATE.md` are customized and renamed for the copied project.
-- `README.md` is a relative symbolic link to `README.mbt.md` so MoonBit and GitHub use the same user-facing document.
+```console
+$ nix run .
+Hello, world!
+```
+
+## Key features
+
+- Dependency-free MoonBit Hello World command-line sample
+- Reproducible Nix development shell with the MoonBit toolchain
+- Optional buildable Nix package and reusable overlay
+- Continuous integration for the supported MoonBit systems
+- Disabled-by-default Mooncakes and FlakeHub publishing workflows
+- Copy-target README and AGENTS templates following the share-artifact specification
+
+## Prerequisites
+
+- **GitHub**: Create a repository with GitHub's **Use this template** flow.
+- **AI coding agent**: Delegate repository initialization using [AGENTS.md](./AGENTS.md).
+- **Nix**: Enter the pinned development environment and optionally build the packaged command.
+
+## Setup
+
+1. Create a repository with GitHub's **Use this template** button.
+2. Ask an AI coding agent to initialize the copied repository by following [AGENTS.md](./AGENTS.md).
+
+## API
+
+### `project`
+
+The sample command accepts no defined options or positional arguments. Extra arguments are ignored, successful execution writes exactly `Hello, world!` followed by a newline to standard output, writes nothing to standard error, and exits with status 0. The sample has no expected runtime failure condition.
+
+```console
+$ moon run src
+Hello, world!
+```
 
 ## Development
 
-For template conversion steps, development commands, target policy, and publishing configuration, see [AGENTS.md](./AGENTS.md).
+For template conversion, project structure, development commands, and publishing configuration, see [AGENTS.md](./AGENTS.md).
 
 ## License
 
 [MIT](./LICENSE)
+
+_This README was generated from the [share-artifact skill](https://raw.githubusercontent.com/totto2727-org/agent/refs/heads/main/plugins/totto2727-coding/skills/share-artifact/SKILL.md) and [README template](https://raw.githubusercontent.com/totto2727-org/agent/refs/heads/main/plugins/totto2727-coding/skills/share-artifact/readme/template.md)._

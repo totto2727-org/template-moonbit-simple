@@ -1,55 +1,71 @@
 # username/project
 
-Replace this paragraph with the project-specific guidance that AI agents need before modifying the repository.
+## Repository structure
 
-## Language Rules
-
-- Use English by default for source code, configuration, documentation, and other repository-recorded artifacts.
-- Replace or extend these rules when the copied project has additional language requirements.
-
-## Required MoonBit Skills
-
-Always consult the relevant MoonBit skills from [`totto2727-coding`](https://github.com/totto2727-org/agent/tree/main/plugins/totto2727-coding): read [`mbt-coding`](https://github.com/totto2727-org/agent/blob/main/plugins/totto2727-coding/skills/mbt-coding/SKILL.md) before editing MoonBit production code, read [`mbt-test`](https://github.com/totto2727-org/agent/blob/main/plugins/totto2727-coding/skills/mbt-test/SKILL.md) before editing MoonBit tests, and use [`docs-moonbit`](https://github.com/totto2727-org/agent/blob/main/plugins/totto2727-coding/skills/docs-moonbit/SKILL.md) when the MoonBit language reference is needed.
-
-## Repository Structure
-
-- `moon.mod` defines the module metadata, repository, targets, and source root.
-- `src/` contains the library implementation, package declaration, and tests.
-- `flake.nix` and `flake.lock` define the reproducible development environment.
-- `.github/workflows/` contains validation and optional publishing workflows.
-
-## Development Commands
-
-Run commands from the repository root inside the Nix development shell.
-
-### Execution Rules
-
-- Run MoonBit commands from the repository root.
-- Enter the environment with `nix develop` before running project commands.
-
-### Standard Tasks
-
-```bash
-nix develop
-moon info
-moon check
-moon test
-moon package --list
+```text
+.github/workflows/  Validation and publishing workflows
+flake.nix           Development shell and optional package outputs
+moon.mod            Module metadata
+package.nix         Optional Nix package definition
+src/main.mbt        Command-line entry point
+src/moon.pkg        Executable package configuration
+README.mbt.md       Canonical end-user documentation
 ```
 
-## Package Updates
+Replace the sample paths with the copied project's actual package layout.
 
-When upgrading a package, always run `nix flake update`.
+## Development commands
 
-## Target Policy
+### Execution rules
 
-Keep `supported_targets` and `preferred_target` in `moon.mod` aligned with the library's APIs and dependency support. When `preferred_target = "js"`, include `pkgs.nodejs` in the Nix development shell.
+- Run commands from the repository root.
+- Enter the environment with `nix develop` before running MoonBit commands.
+- Read the `mbt-coding` skill before editing MoonBit production code, the `mbt-test` skill before editing MoonBit tests, and `docs-moonbit` when language-reference guidance is needed.
+- Keep `README.md -> README.mbt.md` as a relative symbolic link; never replace it with an independently authored file.
+- Keep Nix package commands separate from normal MoonBit validation.
 
-## Architecture and Conventions
+### Standard tasks
 
-Replace this section with the copied project's source layout, public boundaries, naming rules, and other repository-specific constraints.
+- `nix develop` — Enter the pinned MoonBit development environment.
+- `moon info` — Regenerate package interface information after public API changes.
+- `moon check` — Type-check the project.
+- `moon test` — Run the project tests.
+- `moon run src` — Run the command-line application.
+- `moon package --list` — Inspect the files included in the published package.
+- `nix build .#project` — Build the optional Nix package independently.
+- `nix run .` — Run the optional Nix package independently.
 
-## Development Tools
+## Architecture
 
-- **MoonBit** - builds, checks, tests, and packages the library.
-- **Nix flakes** - provide the pinned development toolchain and dependencies.
+### Command-line application
+
+- Replace this item with the command-line entry point and its responsibility.
+- Document accepted arguments, output, exit status, and failures in `README.mbt.md`.
+
+### Package boundaries
+
+- Replace this item with the copied project's package ownership and dependency direction.
+- Keep public declarations documented with caller-visible behavior, constraints, and errors.
+
+### Nix packaging
+
+- Keep `package.nix` minimal and delegate standard build behavior to `moonPlatform.buildMoonPackage`.
+- Remove the optional package and overlay wiring when the copied project only needs the development shell.
+
+## Development tools
+
+- **MoonBit**: Checks, tests, documents, and runs the project.
+- **Nix flakes**: Pin the MoonBit toolchain and optionally build the command-line package.
+- **GitHub Actions**: Validate and publish the repository.
+
+## Package-specific rules
+
+- Replace this section with repository-specific invariants and remove placeholder guidance before handoff.
+- Keep publishing workflows disabled until every mutable `uses:` reference in each privileged publishing workflow is pinned to an audited full commit SHA.
+- Store the base64-encoded Mooncakes credentials file in `MOONCAKES_TOKEN`. After pinning action references, validate with `moon publish --dry-run` in a protected environment, then enable publication by renaming `publish.yml.disabled` to `publish.yml`; otherwise delete the disabled file.
+- Before enabling FlakeHub publication, verify the repository name, public visibility, trusted GitHub organization binding, and protected `main`, then enable the workflow only after action pinning; otherwise delete the disabled file.
+- Run `nix flake update` whenever a package or Nix input is upgraded.
+- Update `moon.mod` whenever module metadata or dependencies change.
+- Run the MoonBit checks and package listing before handoff. When the optional Nix package remains, validate `nix build .#project` and `nix run .` separately.
+
+_This AGENTS.md was generated from the [share-artifact skill](https://raw.githubusercontent.com/totto2727-org/agent/refs/heads/main/plugins/totto2727-coding/skills/share-artifact/SKILL.md) and [AGENTS template](https://raw.githubusercontent.com/totto2727-org/agent/refs/heads/main/plugins/totto2727-coding/skills/share-artifact/agents/template.md)._

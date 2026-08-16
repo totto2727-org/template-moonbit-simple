@@ -8,9 +8,9 @@ repository = "https://github.com/username/project"
 
 license = "MIT"
 
-keywords = [ "moonbit", "library" ]
+keywords = [ "moonbit", "cli" ]
 
-description = "A simple MoonBit library"
+description = "A simple MoonBit command-line application"
 
 // Leave both settings unset for synchronous, backend-neutral libraries.
 //
