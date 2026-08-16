@@ -1,6 +1,6 @@
-# MoonBit Simple Library Template
+# MoonBit Simple CLI Template
 
-A GitHub repository template for starting a simple MoonBit library with a Nix development shell, automated checks, and optional publishing workflows.
+A GitHub repository template for starting a simple MoonBit command-line application with a Nix development shell, a buildable package and overlay, automated checks, and optional publishing workflows.
 
 ## Use This Template
 
@@ -9,9 +9,10 @@ Create a repository with GitHub's **Use this template** button, then follow the 
 ## Included Tooling
 
 - A Nix development shell with the MoonBit toolchain.
+- A buildable Nix package and reusable overlay.
 - GitHub Actions checks for the supported MoonBit targets.
 - Optional Mooncakes and FlakeHub publishing workflows, disabled by default.
-- A sample library and test that can be replaced with project code.
+- A dependency-free Hello World CLI that can be replaced with project code.
 
 ## Documentation Layout
 
@@ -21,7 +22,7 @@ Create a repository with GitHub's **Use this template** button, then follow the 
 
 ## Development
 
-For template conversion steps, development commands, target policy, and publishing configuration, see [AGENTS.md](./AGENTS.md).
+For template conversion steps, development commands, and publishing configuration, see [AGENTS.md](./AGENTS.md).
 
 ## License
 
