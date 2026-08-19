@@ -33,6 +33,7 @@ Hello, world!
 
 - **GitHub**: Create a repository with GitHub's **Use this template** flow.
 - **AI coding agent**: Delegate repository initialization using [AGENTS.md](./AGENTS.md).
+- **MoonBit**: Install the MoonBit toolchain and `moon` command for the primary `moon run src` path; the pinned Nix shell can provide them.
 - **Nix**: Enter the pinned development environment and optionally build the packaged command.
 
 ## Setup
