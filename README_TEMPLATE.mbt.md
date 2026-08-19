@@ -2,8 +2,6 @@
 
 Replace this paragraph with a concise description of what the command-line application does, who it serves, and why someone would use it.
 
-This document is canonical `README.mbt.md`; maintain `README.md` as the relative symlink `README.md -> README.mbt.md`.
-
 ## Usage
 
 Replace this example with the copied project's primary command.

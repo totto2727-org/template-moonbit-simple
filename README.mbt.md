@@ -2,8 +2,6 @@
 
 A GitHub repository template for starting a small MoonBit command-line application with a reproducible development shell, an optional Nix package and overlay, continuous integration, and optional publishing workflows.
 
-This document is canonical `README.mbt.md`; maintain `README.md` as the relative symlink `README.md -> README.mbt.md`.
-
 ## Usage
 
 Run the sample directly from the MoonBit source package:
