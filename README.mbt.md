@@ -1,6 +1,6 @@
 # MoonBit Simple CLI Template
 
-A GitHub repository template for starting a small MoonBit command-line application with a reproducible development shell, an optional Nix package and overlay, continuous integration, and optional publishing workflows.
+A GitHub repository template for starting a small MoonBit command-line application with a dependency-free Hello World example.
 
 ## Usage
 
@@ -21,11 +21,8 @@ Hello, world!
 ## Key features
 
 - Dependency-free MoonBit Hello World command-line sample
-- Reproducible Nix development shell with the MoonBit toolchain
-- Optional buildable Nix package and reusable overlay
-- Continuous integration for the supported MoonBit systems
-- Disabled-by-default Mooncakes and FlakeHub publishing workflows
-- Copy-target README and AGENTS templates following the share-artifact specification
+- Runs directly from MoonBit source or through the optional Nix command
+- Predictable standard output and exit behavior for the starter command
 
 ## Prerequisites
 
@@ -51,7 +48,7 @@ Hello, world!
 
 ## Development
 
-For template conversion, project structure, development commands, and publishing configuration, see [AGENTS.md](./AGENTS.md).
+For development guidance, see [AGENTS.md](./AGENTS.md).
 
 ## License
 
