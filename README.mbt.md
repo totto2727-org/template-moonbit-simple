@@ -32,14 +32,17 @@ Hello, world!
 ## Prerequisites
 
 - **GitHub**: Create a repository with GitHub's **Use this template** flow.
-- **AI coding agent**: Delegate repository initialization using [AGENTS.md](./AGENTS.md).
-- **MoonBit**: Install the MoonBit toolchain and `moon` command for the primary `moon run src` path; the pinned Nix shell can provide them.
-- **Nix**: Enter the pinned development environment and optionally build the packaged command.
+- **MoonBit**: Install the MoonBit toolchain and `moon` command for the primary `moon run src` path.
+- **Nix (optional)**: Install Nix only to use the alternative packaged `nix run .` path.
 
 ## Setup
 
-1. Create a repository with GitHub's **Use this template** button.
-2. Ask an AI coding agent to initialize the copied repository by following [AGENTS.md](./AGENTS.md).
+1. Create a repository with GitHub's **Use this template** button, then clone the created repository.
+2. Run the sample from the cloned repository.
+
+```bash
+moon run src
+```
 
 ## API
 
