@@ -37,12 +37,8 @@ Hello, world!
 
 ## Setup
 
-1. Create a repository with GitHub's **Use this template** button, then clone the created repository.
-2. Run the sample from the cloned repository.
-
-```bash
-moon run src
-```
+1. Create a repository with GitHub's **Use this template** button.
+2. Clone the created repository.
 
 ## API
 
