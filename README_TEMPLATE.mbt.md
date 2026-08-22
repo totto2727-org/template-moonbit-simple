@@ -4,11 +4,11 @@ Replace this paragraph with a concise description of what the command-line appli
 
 ## Usage
 
-Replace this example with the copied project's primary command.
+Prefer a `moonx` example with no runner options. Add `--target native` only when the published package is native-only.
 
 ```console
-$ moon run src
-Hello, world!
+$ moonx username/project
+Replace this output.
 ```
 
 ## Key features
@@ -19,14 +19,47 @@ Hello, world!
 
 ## Prerequisites
 
-- **MoonBit**: Replace this text with the minimum supported toolchain or runtime requirement.
+- **MoonBit or Nix**: Replace this text with the minimum MoonBit toolchain requirement, or require Nix with flakes enabled for the Nix paths.
 
 ## Setup
 
-1. Replace this step with the minimum installation or dependency setup an end user needs.
+1. Show direct execution without installation.
 
 ```bash
-replace-with-setup-command
+moonx username/project
+nix run github:username/project
+```
+
+2. Show installation with MoonBit and Nix.
+
+```bash
+moon install username/project
+nix profile install github:username/project
+```
+
+3. Show declarative installation through the project's overlay in `flake.nix`.
+
+```nix
+{
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    project.url = "github:username/project";
+  };
+
+  outputs = { nixpkgs, project, ... }:
+    let
+      system = "aarch64-darwin"; # Replace with a supported host system.
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ project.overlays.default ];
+      };
+    in
+    {
+      devShells.${system}.default = pkgs.mkShell {
+        packages = [ pkgs.project ];
+      };
+    };
+}
 ```
 
 ## API
@@ -36,8 +69,8 @@ replace-with-setup-command
 Replace this text with the command's accepted arguments and options, standard output, standard error, exit statuses, and failure conditions.
 
 ```console
-$ moon run src
-Hello, world!
+$ project --help
+Replace this output.
 ```
 
 ## Development

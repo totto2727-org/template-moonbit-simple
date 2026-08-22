@@ -61,6 +61,8 @@ Replace the sample paths with the copied project's actual package layout.
 ## Package-specific rules
 
 - Replace this section with repository-specific invariants and remove placeholder guidance before handoff.
+- Keep README Usage centered on `moonx username/project` with no runner options when possible; add `--target native` only for a native-only package.
+- Keep README Setup complete: direct `moonx` and `nix run`, installed `moon install` and `nix profile install`, and a declarative `flake.nix` example using `overlays.default`.
 - Keep publishing workflows disabled until every mutable `uses:` reference in each privileged publishing workflow is pinned to an audited full commit SHA.
 - Store the base64-encoded Mooncakes credentials file in `MOONCAKES_TOKEN`. After pinning action references, validate with `moon publish --dry-run` in a protected environment, then enable publication by renaming `publish.yml.disabled` to `publish.yml`; otherwise delete the disabled file.
 - Before enabling FlakeHub publication, verify the repository name, public visibility, trusted GitHub organization binding, and protected `main`, then enable the workflow only after action pinning; otherwise delete the disabled file.

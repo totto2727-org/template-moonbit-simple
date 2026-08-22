@@ -80,6 +80,7 @@ mv README_TEMPLATE.mbt.md README.mbt.md
 mv AGENTS_TEMPLATE.md AGENTS.md
 ```
 
+- In the generated README, prefer `moonx username/project` with no runner options, and document direct `moonx`/`nix run`, installed `moon install`/`nix profile install`, and declarative overlay-based `flake.nix` setup.
 - Keep publishing workflows disabled until every mutable `uses:` reference in each privileged publishing workflow is pinned to an audited full commit SHA.
 - Store the base64-encoded Mooncakes credentials file in `MOONCAKES_TOKEN`. After pinning action references, validate with `moon publish --dry-run` in a protected environment, then enable publication by renaming `publish.yml.disabled` to `publish.yml`; otherwise delete the disabled file.
 - Before enabling FlakeHub publication, use the official FlakeHub publishing wizard to verify the repository name, public visibility, and trusted GitHub organization binding. After those checks and action pinning, rename `flakehub-publish-rolling.yml.disabled` to `flakehub-publish-rolling.yml`; otherwise delete the disabled file.
