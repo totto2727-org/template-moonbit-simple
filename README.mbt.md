@@ -1,8 +1,6 @@
 # MoonBit Simple CLI Template
 
-A GitHub repository template for starting a small MoonBit command-line application with a reproducible development shell, an optional Nix package and overlay, continuous integration, and optional publishing workflows.
-
-This document is canonical `README.mbt.md`; maintain `README.md` as the relative symlink `README.md -> README.mbt.md`.
+A GitHub repository template for starting a small MoonBit command-line application with a dependency-free Hello World example.
 
 ## Usage
 
@@ -23,22 +21,19 @@ Hello, world!
 ## Key features
 
 - Dependency-free MoonBit Hello World command-line sample
-- Reproducible Nix development shell with the MoonBit toolchain
-- Optional buildable Nix package and reusable overlay
-- Continuous integration for the supported MoonBit systems
-- Disabled-by-default Mooncakes and FlakeHub publishing workflows
-- Copy-target README and AGENTS templates following the share-artifact specification
+- Runs directly from MoonBit source or through the optional Nix command
+- Predictable standard output and exit behavior for the starter command
 
 ## Prerequisites
 
 - **GitHub**: Create a repository with GitHub's **Use this template** flow.
-- **AI coding agent**: Delegate repository initialization using [AGENTS.md](./AGENTS.md).
-- **Nix**: Enter the pinned development environment and optionally build the packaged command.
+- **MoonBit**: Install the MoonBit toolchain and `moon` command for the primary `moon run src` path.
+- **Nix (optional)**: Install Nix only to use the alternative packaged `nix run .` path.
 
 ## Setup
 
 1. Create a repository with GitHub's **Use this template** button.
-2. Ask an AI coding agent to initialize the copied repository by following [AGENTS.md](./AGENTS.md).
+2. Clone the created repository.
 
 ## API
 
@@ -53,7 +48,7 @@ Hello, world!
 
 ## Development
 
-For template conversion, project structure, development commands, and publishing configuration, see [AGENTS.md](./AGENTS.md).
+For development guidance, see [AGENTS.md](./AGENTS.md).
 
 ## License
 

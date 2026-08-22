@@ -71,7 +71,7 @@ src/moon.pkg                Executable package configuration
 
 - When initializing a copied repository, replace `project`, `username/project`, and the repository URL in `moon.mod` and `flake.nix`, then update the module description, keywords, and version.
 - Replace the Hello World implementation with the copied project's command-line behavior.
-- If the copied project does not need a Nix package or overlay, delete `package.nix` and remove `packages`, `overlays`, `moon-registry`, `mkProject`, and related package wiring from `flake.nix` while retaining the development shell and MoonBit toolchain overlay.
+- Keep `package.nix` and the package and overlay outputs for distributable CLI applications so every README execution and installation path remains valid; remove them only when the copied project is no longer distributed as a CLI.
 - Customize `README_TEMPLATE.mbt.md` and `AGENTS_TEMPLATE.md`, then replace the template-only canonical documents without changing the `README.md` symlink:
 
 ```bash
@@ -80,6 +80,7 @@ mv README_TEMPLATE.mbt.md README.mbt.md
 mv AGENTS_TEMPLATE.md AGENTS.md
 ```
 
+- In the generated README, prefer `moonx username/project` with no runner options, and document direct `moonx`/`nix run`, installed `moon install`/`nix profile install`, and declarative overlay-based `flake.nix` setup as mutually exclusive choices; state that only one setup method is required.
 - Keep publishing workflows disabled until every mutable `uses:` reference in each privileged publishing workflow is pinned to an audited full commit SHA.
 - Store the base64-encoded Mooncakes credentials file in `MOONCAKES_TOKEN`. After pinning action references, validate with `moon publish --dry-run` in a protected environment, then enable publication by renaming `publish.yml.disabled` to `publish.yml`; otherwise delete the disabled file.
 - Before enabling FlakeHub publication, use the official FlakeHub publishing wizard to verify the repository name, public visibility, and trusted GitHub organization binding. After those checks and action pinning, rename `flakehub-publish-rolling.yml.disabled` to `flakehub-publish-rolling.yml`; otherwise delete the disabled file.
