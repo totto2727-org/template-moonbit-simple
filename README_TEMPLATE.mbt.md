@@ -23,21 +23,39 @@ Replace this output.
 
 ## Setup
 
-1. Show direct execution without installation.
+Choose one of the following setup methods. Only one is required.
+
+### Run without installing
+
+Run with either MoonBit:
 
 ```bash
 moonx username/project
+```
+
+or Nix:
+
+```bash
 nix run github:username/project
 ```
 
-2. Show installation with MoonBit and Nix.
+### Install the command
+
+Install with either MoonBit:
 
 ```bash
 moon install username/project
+```
+
+or Nix:
+
+```bash
 nix profile install github:username/project
 ```
 
-3. Show declarative installation through the project's overlay in `flake.nix`.
+### Add declaratively with Nix
+
+Add the project's overlay and package to `flake.nix`.
 
 ```nix
 {
