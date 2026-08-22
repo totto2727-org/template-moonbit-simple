@@ -71,7 +71,7 @@ src/moon.pkg                Executable package configuration
 
 - When initializing a copied repository, replace `project`, `username/project`, and the repository URL in `moon.mod` and `flake.nix`, then update the module description, keywords, and version.
 - Replace the Hello World implementation with the copied project's command-line behavior.
-- If the copied project does not need a Nix package or overlay, delete `package.nix` and remove `packages`, `overlays`, `moon-registry`, `mkProject`, and related package wiring from `flake.nix` while retaining the development shell and MoonBit toolchain overlay.
+- Keep `package.nix` and the package and overlay outputs for distributable CLI applications so every README execution and installation path remains valid; remove them only when the copied project is no longer distributed as a CLI.
 - Customize `README_TEMPLATE.mbt.md` and `AGENTS_TEMPLATE.md`, then replace the template-only canonical documents without changing the `README.md` symlink:
 
 ```bash

@@ -50,7 +50,7 @@ Replace the sample paths with the copied project's actual package layout.
 ### Nix packaging
 
 - Keep `package.nix` minimal and delegate standard build behavior to `moonPlatform.buildMoonPackage`.
-- Remove the optional package and overlay wiring when the copied project only needs the development shell.
+- Keep the package and overlay wiring for distributable CLI applications so every documented MoonBit and Nix path remains valid; remove it only when the project is no longer distributed as a CLI.
 
 ## Development tools
 
