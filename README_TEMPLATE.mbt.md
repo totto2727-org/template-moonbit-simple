@@ -23,9 +23,9 @@ Replace this output.
 
 ## Setup
 
-Choose one of the following setup methods. Only one is required.
+Keep every delivery path that the completed command supports, and remove unsupported paths before publishing its README. A command-line application should document a temporary invocation, a persistent installation, and a declarative Nix consumer configuration when those paths are available. Libraries instead document only their `moon add` dependency command.
 
-### Run without installing
+### Run once without installing
 
 Run with either MoonBit:
 
@@ -39,7 +39,7 @@ or Nix:
 nix run github:username/project
 ```
 
-### Install the command
+### Install the command persistently
 
 Install with either MoonBit:
 
@@ -50,7 +50,7 @@ moon install username/project
 or Nix:
 
 ```bash
-nix profile install github:username/project
+nix profile add github:username/project
 ```
 
 ### Add declaratively with Nix
