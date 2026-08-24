@@ -25,27 +25,25 @@ Replace this output.
 
 Keep every delivery path that the completed command supports, and remove unsupported paths before publishing its README. A command-line application should document a temporary invocation, a persistent installation, and a declarative Nix consumer configuration when those paths are available. Libraries instead document only their `moon add` dependency command.
 
-### Run
+### Run without installing
 
 ```bash
+# MoonBit
 moonx username/project
-```
-
-```bash
+# Nix
 nix run github:username/project
 ```
 
 ### Install
 
 ```bash
+# MoonBit
 moon install username/project
-```
-
-```bash
+# Nix
 nix profile add github:username/project
 ```
 
-### `flake.nix`
+### Nix flake
 
 Add the project's overlay and package to `flake.nix`.
 
