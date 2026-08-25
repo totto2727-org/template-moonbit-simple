@@ -23,37 +23,27 @@ Replace this output.
 
 ## Setup
 
-Choose one of the following setup methods. Only one is required.
+Keep every delivery path that the completed command supports, and remove unsupported paths before publishing its README. A command-line application should document a temporary invocation, a persistent installation, and a declarative Nix consumer configuration when those paths are available. Libraries instead document only their `moon add` dependency command.
 
 ### Run without installing
 
-Run with either MoonBit:
-
 ```bash
+# MoonBit
 moonx username/project
-```
-
-or Nix:
-
-```bash
+# Nix
 nix run github:username/project
 ```
 
-### Install the command
-
-Install with either MoonBit:
+### Install
 
 ```bash
+# MoonBit
 moon install username/project
+# Nix
+nix profile add github:username/project
 ```
 
-or Nix:
-
-```bash
-nix profile install github:username/project
-```
-
-### Add declaratively with Nix
+### Nix flake
 
 Add the project's overlay and package to `flake.nix`.
 
