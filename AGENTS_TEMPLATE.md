@@ -37,6 +37,13 @@ Replace the sample paths with the copied project's actual package layout.
 
 ## Architecture
 
+### CI and publication policy
+
+- Keep the inherited CI and publication workflows unchanged by default.
+- Do not replace publication on pushes to `main` with tag or release triggers. Preserve existing tag triggers where already configured.
+- Change workflows only for an explicit user request or a demonstrated project requirement, and explain why the change is necessary.
+- Publication setup does not justify unrelated CI changes.
+
 ### Command-line application
 
 - Replace this item with the command-line entry point and its responsibility.
