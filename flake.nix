@@ -65,6 +65,10 @@
             packages = [
               pkgs.moonbit-bin.moonbit.latest
             ];
+            shellHook = ''
+              # Enable Git Hook
+              vp config
+            '';
           };
         }
       );
