@@ -60,7 +60,8 @@
         let
           pkgs = mkPkgs system;
         in
-        {
+        rec {
+          ci = default.overrideAttrs (_: { shellHook = ""; });
           default = pkgs.mkShell {
             packages = [
               pkgs.moonbit-bin.moonbit.latest
