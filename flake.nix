@@ -39,7 +39,7 @@
           inherit system;
           overlays = [ moonbit-overlay.overlays.default ];
         };
-      toolchainFor = pkgs: pkgs.moonbit-bin."v0.10.9+6e6c44045+fc2a4ee";
+      toolchainFor = pkgs: pkgs.moonbit-bin.latest;
       mkProject =
         pkgs:
         pkgs.callPackage ./package.nix {
