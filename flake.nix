@@ -4,8 +4,13 @@
   inputs = {
     nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1";
     moonbit-overlay = {
-      url = "github:totto2727-org/moonbit-overlay";
+      url = "github:moonbit-community/moonbit-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    moon-nix = {
+      url = "github:moonbit-community/moon-nix/026f5a4e9fc7bf78699d69fdb70318c26ac8f07c";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.moonbit-overlay.follows = "moonbit-overlay";
     };
     moon-registry = {
       url = "git+https://mooncakes.io/git/index";
@@ -18,6 +23,7 @@
       self,
       nixpkgs,
       moonbit-overlay,
+      moon-nix,
       moon-registry,
       ...
     }:
@@ -33,9 +39,12 @@
           inherit system;
           overlays = [ moonbit-overlay.overlays.default ];
         };
+      toolchainFor = pkgs: pkgs.moonbit-bin.latest;
       mkProject =
         pkgs:
         pkgs.callPackage ./package.nix {
+          moonNix = moon-nix;
+          toolchain = toolchainFor pkgs;
           moonRegistryIndex = moon-registry;
         };
     in
@@ -66,7 +75,7 @@
           });
           default = pkgs.mkShell {
             packages = [
-              pkgs.moonbit-bin.moonbit.latest
+              (toolchainFor pkgs)
             ];
             shellHook = ''
               # Enable Git Hook
