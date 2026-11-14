@@ -1,1 +1,4 @@
-pkgtype(kind: "executable")
+options(
+  is_main: true,
+  bin_name: "project",
+)

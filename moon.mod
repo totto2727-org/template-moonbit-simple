@@ -24,4 +24,4 @@ description = "A simple MoonBit command-line application"
 // preferred_target = "js"
 // preferred_target = "native"
 
-source = "./src"
+source = "src"
