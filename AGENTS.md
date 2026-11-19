@@ -45,7 +45,7 @@ Read `mbt-coding` before editing MoonBit production code, `mbt-test` before edit
 
 Replace `username/project`, the repository URL, version, description, keywords, and license in `moon.mod`.
 Keep its `readme = "README.mbt.md"` setting.
-Replace `project` package and overlay names and the description in `flake.nix`, then update command names and repository references in the project documentation.
+Replace `project` package and overlay names and the description in `flake.nix`, replace `bin_name: "project"` in `src/moon.pkg`, then update command names and repository references in the project documentation.
 Review the license holder and replace the starter source with the actual project.
 Retain `package.nix` and the package/overlay outputs for a distributable CLI so the documented Nix installation paths remain valid.
 Remove them only if the copied project is no longer distributed as a CLI, and remove unsupported documentation paths at the same time.
