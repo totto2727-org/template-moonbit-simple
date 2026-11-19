@@ -1,1 +1,5 @@
 pkgtype(kind: "executable")
+
+options(
+  bin_name: "project",
+)
