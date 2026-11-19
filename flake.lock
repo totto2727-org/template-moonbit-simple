@@ -10,17 +10,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1791134411,
-        "narHash": "sha256-QVpZVEnEAawQ04JvG1ymzR2mVGBMA55j7VqkRm3Qlzw=",
-        "owner": "moonbit-community",
+        "lastModified": 1795094855,
+        "narHash": "sha256-tzDDTVSodmLsZWphiRDENtwA4H+mSrcWeRRPBVXIFps=",
+        "owner": "totto2727-org",
         "repo": "moon-nix",
-        "rev": "026f5a4e9fc7bf78699d69fdb70318c26ac8f07c",
+        "rev": "794cab241c4ca8892646c441d52a5d3633c914b4",
         "type": "github"
       },
       "original": {
-        "owner": "moonbit-community",
+        "owner": "totto2727-org",
         "repo": "moon-nix",
-        "rev": "026f5a4e9fc7bf78699d69fdb70318c26ac8f07c",
+        "rev": "794cab241c4ca8892646c441d52a5d3633c914b4",
         "type": "github"
       }
     },
